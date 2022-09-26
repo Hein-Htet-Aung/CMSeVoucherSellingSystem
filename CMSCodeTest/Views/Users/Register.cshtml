@@ -1,0 +1,61 @@
+﻿@model CMSCodeTest.Models.Users
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 class="form-text">Register</h1>
+<hr />
+@if(TempData["Message"] != null)
+{ 
+<div class="text-danger">@TempData["Message"].ToString()</div>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input asp-for="User_Name" class="form-control" />
+                <span asp-validation-for="User_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ph No.</label>
+                <input asp-for="Phone_Number" class="form-control" />
+                <span asp-validation-for="Phone_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Role</label>
+                @Html.DropDownListFor(model => model.User_Role, ViewData["RoleFromDB"] as IEnumerable<SelectListItem>, "Select Role", new { @class = "form-control" })
+                <span asp-validation-for="User_Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

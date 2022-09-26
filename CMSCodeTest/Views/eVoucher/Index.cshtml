@@ -1,0 +1,143 @@
+﻿@model IEnumerable<CMSCodeTest.Models.eVoucher>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_MainLayout";
+}
+
+<h1 class="form-text">Vouncher List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label class="text-center"></label>
+            </th>
+            <th>
+                <label class="text-center">Title</label>
+            </th>
+            <th>
+                <label class="text-center">Description</label>
+            </th>
+            <th style="width:40px">
+                <label class="text-center" style="width:100px">Expiry Date</label>
+            </th>
+            <th>
+                <label class="text-center" style="width:100px">Image</label>
+            </th>
+            <th>
+                <label class="text-center">Amount</label>
+            </th>
+            <th>
+                <label class="text-center" style="width:150px">Payment Method</label>
+            </th>
+            <th>
+                <label class="text-center" style="width:210px">Payment Method Discount</label>
+            </th>
+            <th>
+                <label class="text-center">Qty</label>
+            </th>
+            <th>
+                <label class="text-center">Type</label>
+            </th>
+            <th>
+                <label class="text-center" style="width:120px">My Self Name</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 110px">My Self PhNo.</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 110px">My Self Limit</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 170px">Gift To Others Name</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 170px">Gift To Others PhNo.</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 170px">Gift To Others Limit.</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 240px">Gift To Others Max Buy Limit.</label>
+            </th>
+            <th>
+                <label class="text-center" style="width: 100px">Promo Code</label>
+            </th>
+            <th>
+                <label class="text-center">Email</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="width: 100px">
+
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                <label class="text-center" style="width: 100px"></label>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.ExpiryDate, "{0:dd/MM/yyyy}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethodPerDiscount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MO_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MO_PhNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MO_MaxBuyLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GTO_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GTO_PhNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GTO_GTOLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GTO_MaxBuyLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromoCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

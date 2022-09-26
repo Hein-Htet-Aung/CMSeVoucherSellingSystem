@@ -1,0 +1,58 @@
+﻿@page 
+@model Users
+@{
+}
+
+<div class="border container" style="padding:30px">
+    <form method="post">
+        @*<div class="text-danger" asp-validation-summary="ModelOnly"></div>*@
+        <div class="form-group row">
+            <div class="form-group col-4">
+                <label class="form-control">Name </label>
+            </div>
+            <div class="col-5">
+                <input class="form-control" />
+            </div>
+            <span @*asp-validation-for="User_Name"*@ class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="form-group col-4">
+                <label @*asp-for="Email"*@ class="form-control"> Email</label>
+            </div>
+            <div class="col-5">
+                <input name="Email" class="form-control" />
+            </div>
+            <span id="Emails" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label  class="form-control"> Password</label>
+            </div>
+            <div class="col-5">
+                <input name="Password" class="form-control" />
+            </div>
+            <span id="Passwords" class="text-danger"></span>
+        </div>
+        <div>
+            <div class="form-group row">
+                <div class="col-2 offset-md-4">
+                    <button asp-page="" class="btn btn-primary form-control">Register</button>
+                </div>
+                <div class="col-3">
+                    <button asp-controller="Home" class="btn btn-success text-white" value="BTL">Cancel</button>
+
+                </div>
+
+
+            </div>
+            </div>
+        
+    </form>
+
+
+</div>
+
+@*@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+     }*@

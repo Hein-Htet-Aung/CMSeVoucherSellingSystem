@@ -1,0 +1,132 @@
+﻿@model CMSCodeTest.Models.eVoucherViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_MainLayout";
+}
+
+<h1>eVoucher</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="Id" class="control-label"></label>*@
+                <input type="hidden" asp-for="Id" class="form-control" />
+                <input type="hidden" asp-for="PromoCode" class="form-control" />
+                <input type="hidden" asp-for="QRCode" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Expiry Date</label>
+                <input asp-for="ExpiryDate" class="form-control" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Payment Method</label>
+                @Html.DropDownListFor(model => model.PaymentMethod, ViewData["PaymentMethodFromDB"] as IEnumerable<SelectListItem>, "Select PaymentMethod", new { @class = "form-control" })
+                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Payment Method Per Discount</label>
+                <input asp-for="PaymentMethodPerDiscount" class="form-control" />
+                <span asp-validation-for="PaymentMethodPerDiscount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Qty" class="control-label"></label>
+                <input asp-for="Qty" class="form-control" />
+                <span asp-validation-for="Qty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>MySelf Only</label>
+                <ul class="form-group">
+                    <li>
+                        <label class="control-label">Name</label>
+                        <input asp-for="MO_Name" class="form-control" />
+                        <span asp-validation-for="MO_Name" class="text-danger"></span>
+                    </li>
+                    <li>
+                        <label class="control-label">Ph No.</label>
+                        <input asp-for="MO_PhNo" class="form-control" />
+                        <span asp-validation-for="MO_PhNo" class="text-danger"></span>
+                    </li>
+                    <li>
+                        <label class="control-label">Max Buy Limit</label>
+                        <input asp-for="MO_MaxBuyLimit" class="form-control" />
+                        <span asp-validation-for="MO_MaxBuyLimit" class="text-danger"></span>
+                    </li>
+                </ul>
+            </div>
+            @*<div class="form-group">
+
+        </div>
+        <div class="form-group">
+
+        </div>*@
+            <div class="form-group">
+                <label>Gift To Others</label>
+                <ul class="form-group">
+                    <li>
+                        <label class="control-label">Name</label>
+                        <input asp-for="GTO_Name" class="form-control" />
+                        <span asp-validation-for="GTO_Name" class="text-danger"></span>
+                    </li>
+                    <li>
+                        <label class="control-label">Ph No.</label>
+                        <input asp-for="GTO_PhNo" class="form-control" />
+                        <span asp-validation-for="GTO_PhNo" class="text-danger"></span>
+                    </li>
+                    <li>
+                        <label class="control-label">Gift TO Others Limit</label>
+                        <input asp-for="GTO_GTOLimit" class="form-control" />
+                        <span asp-validation-for="GTO_GTOLimit" class="text-danger"></span>
+                    </li>
+                    <li>
+                        <label class="control-label">Gift TO Others Max Buy Limit</label>
+                        <input asp-for="GTO_MaxBuyLimit" class="form-control" />
+                        <span asp-validation-for="GTO_MaxBuyLimit" class="text-danger"></span>
+                    </li>
+                    <li>
+
+                    </li>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-warning">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
